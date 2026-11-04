@@ -12,7 +12,7 @@
 (function () {
   'use strict';
 
-  var WEB_APP_URL = 'PASTE_YOUR_WEB_APP_URL_HERE';
+  var WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxm5UHxbKrqahK_HRwOzxzvgnEbK9bE1TNwgOo3SOJh9__0kybgfX4S-Hljf9ajxqY/exec';
 
   var TAKEN_MESSAGE = 'That time was just taken. Please pick another.';
   var LOCATION_LINE = 'Chevron and OutRun stores, Hwy 43, Thomasville, AL';
