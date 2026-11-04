@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a cashier interview — Varsa Group LLC</title>
+  <meta name="description" content="Book a 20-minute cashier interview with Varsa Group LLC. Chevron and OutRun stores on Hwy 43, Thomasville, AL. November 9–13, 2026.">
+  <meta property="og:title" content="Book a cashier interview — Varsa Group LLC">
+  <meta property="og:description" content="20-minute interviews, November 9–13, 2026. Chevron and OutRun on Hwy 43, Thomasville, AL.">
+  <meta name="theme-color" content="#0a3f33">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a3f33'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Georgia' font-size='13' fill='%23f6f1e6'%3EVG%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,650&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- The booking link is set in js/app.js. Look for WEB_APP_URL. -->
+  <a class="skip" href="#times">Skip to interview times</a>
+
+  <header class="hero">
+    <div class="wrap hero-inner">
+      <p class="brand"><span class="mark" aria-hidden="true">VG</span> Varsa Group LLC</p>
+      <h1>Cashier interviews</h1>
+      <p class="lede">Chevron &amp; OutRun · Hwy 43, Thomasville, Alabama</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p class="intro">Pick a 20-minute time between Monday, November 9 and Friday, November 13. Interviews run from 9:00 AM to 5:00 PM Central. The lunch hour, 12:00 to 1:00 PM, is closed.</p>
+    <p id="open-count" class="open-count" aria-live="polite"></p>
+
+    <div id="preview-banner" class="banner banner-preview" hidden>
+      <p>Preview only. These are sample times, not the live schedule. Nothing you submit is saved, and no email is sent. To take real bookings, paste the web app URL into <strong>js/app.js</strong>. The steps are in the README.</p>
+    </div>
+
+    <div id="banner" class="banner" hidden>
+      <p id="banner-text"></p>
+      <button type="button" id="retry-btn" hidden>Try again</button>
+    </div>
+
+    <div id="picker">
+      <section id="times" aria-labelledby="times-heading">
+        <h2 id="times-heading" class="sr-only">Choose a day and time</h2>
+        <div id="day-list" class="days" role="group" aria-label="Interview days"></div>
+        <div id="slot-panel" class="slot-panel">
+          <p class="muted">Loading open times…</p>
+        </div>
+        <p class="continue-row">
+          <button type="button" id="continue-btn" class="text-btn" hidden>Continue to your details</button>
+        </p>
+      </section>
+
+      <section class="card" id="details" aria-labelledby="details-heading">
+        <h2 id="details-heading">Your details</h2>
+        <p id="selected-summary" class="summary">No time selected yet.</p>
+        <form id="booking-form" novalidate>
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" autocomplete="name" autocapitalize="words" maxlength="80" placeholder="First and last name" required>
+          <p id="name-error" class="field-error" role="alert"></p>
+
+          <label for="phone">Mobile phone</label>
+          <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="32" placeholder="(251) 555-0134" required>
+          <p id="phone-error" class="field-error" role="alert"></p>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="120" placeholder="you@email.com" required>
+          <p id="email-error" class="field-error" role="alert"></p>
+
+          <fieldset class="stores">
+            <legend>Which store do you prefer?</legend>
+            <p class="hint">This is the store you’d like to work at. Either is fine if you don’t have a preference. It does not change the interview time.</p>
+            <div class="store-options">
+              <label class="store">
+                <input type="radio" name="store" value="Chevron">
+                <span>Chevron</span>
+              </label>
+              <label class="store">
+                <input type="radio" name="store" value="OutRun">
+                <span>OutRun</span>
+              </label>
+              <label class="store is-selected">
+                <input type="radio" name="store" value="Either" checked>
+                <span>Either</span>
+              </label>
+            </div>
+            <p id="store-error" class="field-error" role="alert"></p>
+          </fieldset>
+
+          <button type="submit" class="submit" id="submit-btn">Book this interview</button>
+        </form>
+      </section>
+    </div>
+
+    <section id="confirm" class="card confirm" hidden aria-labelledby="confirm-title">
+      <p class="eyebrow">Varsa Group LLC</p>
+      <h2 id="confirm-title" tabindex="-1">You’re booked</h2>
+      <p id="confirm-lead"></p>
+      <dl class="details">
+        <div><dt>When</dt><dd id="c-when"></dd></div>
+        <div><dt>Time</dt><dd id="c-time"></dd></div>
+        <div><dt>Where</dt><dd id="c-where"></dd></div>
+        <div><dt>Name</dt><dd id="c-name"></dd></div>
+        <div><dt>Phone</dt><dd id="c-phone"></dd></div>
+        <div><dt>Email</dt><dd id="c-email"></dd></div>
+        <div><dt>Store preference</dt><dd id="c-store"></dd></div>
+        <div><dt>Reference</dt><dd id="c-ref"></dd></div>
+      </dl>
+      <ul id="bring" class="bring">
+        <li>Arrive a few minutes early.</li>
+        <li>Bring a photo ID.</li>
+        <li>Plan on about 20 minutes.</li>
+      </ul>
+      <p id="confirm-note"></p>
+      <div class="actions">
+        <button type="button" class="submit" id="print-btn">Print or save this page</button>
+        <button type="button" class="submit ghost" id="another-btn">Book another person</button>
+      </div>
+    </section>
+
+    <noscript>
+      <p class="banner banner-error">This page needs JavaScript turned on to show open interview times.</p>
+    </noscript>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p><strong>Varsa Group LLC</strong></p>
+      <p>Cashier interviews for the Chevron and OutRun stores on Hwy 43 in Thomasville, Alabama. November 9–13, 2026.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
